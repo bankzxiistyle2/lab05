@@ -1,7 +1,49 @@
 <hmtl>
     <head>
-        <title>        </title>
+        <title>AJAX</title>
+        <script>
+        function loadXMLDoc(){
+            var xmlhttp,xmlhttp2;
+            if (window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                alert(xmlhttp.readyState + " : " + xmlhttp.status);
+                if(xmlhttp.readyState==4 && xmlhttp.status == 200){
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                    
+                }
+            }
+
+            xmlhttp.open("GET","kamkom.php",true);
+            xmlhttp.send();
+
+            xmlhttp2.onreadystatechange = function() {
+               if(xmlhttp2.readyState==4 && xmlhttp2.status == 200){
+                    document.getElementById("58160432").innerHTML = xmlhttp2.responseText;
+                    
+                }
+            }
+
+            xmlhttp2.open("GET","http://angsila.cs.buu.ac.th/~58160432/887371/lab05/kamkom.php",true);
+            xmlhttp2.send();
+
+        }
+
+        </script>
     </head>
     <body>
+        <div id="myDiv">
+            <h1>Let APAX this text</h1>
+        </div>
+        <div id="58160432">
+        </div>
+
+        <button type="button" onclick="loadXMLDoc()">
+            Change Content
+        </button>
     </body>
 </hmtl>
